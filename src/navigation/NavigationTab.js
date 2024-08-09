@@ -12,7 +12,7 @@ export default function NavigationTab(props) {
   return (
     <Tab.Navigator initalRouteName="Account" screenOptions={{headerShown: false}} >
         <Tab.Screen 
-            name="Account" 
+            name="Account Tab" 
             component={AccountNavigation} 
             options={{
                 tabBarLabel: "Mi Cuenta",
@@ -20,14 +20,14 @@ export default function NavigationTab(props) {
             }} 
         />
         <Tab.Screen 
-            name="Pokedex" 
+            name="Pokedex Tab" 
             component={PokedexNavigation}
             options = {{
                 tabBarIcon: () => renderPokeball()
             }} />
 
         <Tab.Screen 
-            name="Favourite" 
+            name="Favourite Tab" 
             component={FavoriteNavigation} 
             options={{
                 tabBarLabel: "Favoritos", 
