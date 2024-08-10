@@ -23,6 +23,7 @@ export default function NavigationTab(props) {
             name="Pokedex Tab" 
             component={PokedexNavigation}
             options = {{
+                tabBarLabel: "Pokedex",
                 tabBarIcon: () => renderPokeball()
             }} />
 
