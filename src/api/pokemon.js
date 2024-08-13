@@ -1,14 +1,26 @@
 import { API_HOST } from "../utils/constants";
 
-export async function getPokemonsApi() {
+export async function getPokemonsApi(endpointUrl) {
     try {
-        const url = `${API_HOST}/pokemon?limit=20&offset=0`;
-        const response = await fetch(url);
+        const url = `${API_HOST}/pokemon?offset=0&limit=20`;
+        const response = await fetch(url || endpointUrl);
         const result = await response.json();
         return result;
     } catch (error) {
         throw error;
     }
+}
+
+export async function loadMorePokemonsApi(endpointUrl) {
+    try {
+        console.log(endpointUrl)
+        const response = await fetch(endpointUrl);
+        const result = await response.json();
+        return result;
+    } catch (error) {
+        throw error;
+    }
+    
 }
 
 export async function getPokemonDetailsByUrlApi(url) {
