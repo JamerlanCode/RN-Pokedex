@@ -2,16 +2,18 @@ import React, {useState} from 'react'
 import { View, Text, StyleSheet, TextInput,Button,Keyboard, Alert } from 'react-native'
 import {useFormik} from 'formik'
 import * as Yup from 'yup'
-import {user, userDetails} from "../../utils/userDB"
+import {user, userDetails} from "../../utils/userDB";
+import useAuth from '../../hooks/useAuth';
 
 export default function LoginForm() {
 
  const showAlert = () => {
   Alert.alert('Error','El usuario o Contrasena son Incorrectos',[{text:"OK",style:"cancel"}],{cancelable:true})
  }
-
-  const [error,setError] = useState("")
-
+ 
+ const {login} = useAuth();
+ console.log(useAuth());
+ 
   const formik = useFormik({
     validationSchema: Yup.object(validationSchema()),
     initialValues:initalValues(),
@@ -23,6 +25,7 @@ export default function LoginForm() {
         showAlert();
       } else {
         console.log("login exitoso");
+        login(userDetails);
       }     
     }
   })
